@@ -6,7 +6,7 @@ dotenv.config();
 
 const baseUrl = process.env.BASE_URL;
 
-export async function discoverMovie(): Promise<AxiosResponse<DiscoverDetails>> {
+export async function getMovieInfo(): Promise<AxiosResponse<DiscoverDetails>> {
   const url = `discover/movie`;
 
   const queryParams = {
@@ -30,7 +30,7 @@ export async function discoverMovie(): Promise<AxiosResponse<DiscoverDetails>> {
   }
 }
 
-export async function discoverTv(): Promise<AxiosResponse<DiscoverDetails>> {
+export async function getTvInfo(): Promise<AxiosResponse<DiscoverDetails>> {
   const url = `discover/tv`;
 
   const queryParams = {
