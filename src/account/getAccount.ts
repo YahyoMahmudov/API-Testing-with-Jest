@@ -1,17 +1,15 @@
 import { AxiosResponse } from 'axios';
-import { AccountDetailsI } from './accountDetailsI'
 import { httpRequest } from '../httpMethod/httpRequest';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const baseUrl = process.env.BASE_URL;
 const accountId = process.env.ACCOUNT_ID;
 
-export async function getAccountDetails(): Promise<AxiosResponse<AccountDetailsI>> {
-    const url = `${baseUrl}account/${accountId}`;
+export async function getAccountDetails(): Promise<AxiosResponse> {
+    const url = `account/${accountId}`;
 
     try {
-        const response = await httpRequest<AccountDetailsI>('GET', url);
+        const response = await httpRequest<AxiosResponse>('GET', url);
         return response;
     } catch (error) {
         console.error('Error fetching account details:', error);
@@ -19,8 +17,8 @@ export async function getAccountDetails(): Promise<AxiosResponse<AccountDetailsI
     }
 }
 
-export async function getAccountFavourites(): Promise<AxiosResponse<AccountDetailsI>> {
-    const url = `${baseUrl}account/${accountId}?language=en-US&page=1&sort_by=created_at.asc`;
+export async function getAccountFavouriteMovies(): Promise<AxiosResponse> {
+    const url = `account/${accountId}/favorite/movies`;
 
     const queryParams = {
         language: 'en-US',
@@ -29,7 +27,131 @@ export async function getAccountFavourites(): Promise<AxiosResponse<AccountDetai
     };
 
     try {
-        const response = await httpRequest<AccountDetailsI>('GET', url, queryParams);
+        const response = await httpRequest<AxiosResponse>('GET', url, queryParams);
+        return response;
+    } catch (error) {
+        console.error('Error fetching account details:', error);
+        throw error;
+    }
+}
+
+export async function getAccountFavouriteTV(): Promise<AxiosResponse> {
+    const url = `account/${accountId}/favorite/tv`;
+
+    const queryParams = {
+        language: 'en-US',
+        page: 1,
+        sort_by: 'created_at.asc'
+    };
+
+    try {
+        const response = await httpRequest<AxiosResponse>('GET', url, queryParams);
+        return response;
+    } catch (error) {
+        console.error('Error fetching account details:', error);
+        throw error;
+    }
+}
+
+export async function getAccountLists(): Promise<AxiosResponse> {
+    const url = `account/${accountId}/lists`;
+
+    const queryParams = {
+        page: 1,
+    };
+
+    try {
+        const response = await httpRequest<AxiosResponse>('GET', url, queryParams);
+        return response;
+    } catch (error) {
+        console.error('Error fetching account details:', error);
+        throw error;
+    }
+}
+
+export async function getAccountRatedMovies(): Promise<AxiosResponse> {
+    const url = `account/${accountId}/rated/movies`;
+
+    const queryParams = {
+        language: 'en-US',
+        page: 1,
+        sort_by: 'created_at.asc'
+    };
+
+    try {
+        const response = await httpRequest<AxiosResponse>('GET', url, queryParams);
+        return response;
+    } catch (error) {
+        console.error('Error fetching account details:', error);
+        throw error;
+    }
+}
+
+export async function getAccountRatedTV(): Promise<AxiosResponse> {
+    const url = `account/${accountId}/rated/tv`;
+
+    const queryParams = {
+        language: 'en-US',
+        page: 1,
+        sort_by: 'created_at.asc'
+    };
+
+    try {
+        const response = await httpRequest<AxiosResponse>('GET', url, queryParams);
+        return response;
+    } catch (error) {
+        console.error('Error fetching account details:', error);
+        throw error;
+    }
+}
+
+export async function getAccountRatedTvEpisodes(): Promise<AxiosResponse> {
+    const url = `account/${accountId}/rated/tv/episodes`;
+
+    const queryParams = {
+        language: 'en-US',
+        page: 1,
+        sort_by: 'created_at.asc'
+    };
+
+    try {
+        const response = await httpRequest<AxiosResponse>('GET', url, queryParams);
+        return response;
+    } catch (error) {
+        console.error('Error fetching account details:', error);
+        throw error;
+    }
+}
+
+export async function getAccountWatchlistMovies(): Promise<AxiosResponse> {
+    const url = `account/${accountId}/watchlist/movies`;
+
+    const queryParams = {
+        language: 'en-US',
+        page: 1,
+        sort_by: 'created_at.asc'
+    };
+
+    try {
+        const response = await httpRequest<AxiosResponse>('GET', url, queryParams);
+        return response;
+    } catch (error) {
+        console.error('Error fetching account details:', error);
+        throw error;
+    }
+}
+
+export async function getAccountWatchlistTV(): Promise<AxiosResponse> {
+    const url = `account/${accountId}/watchlist/tv`;
+
+    const queryParams = {
+        language: 'en-US',
+        page: 1,
+        sort_by: 'created_at.asc'
+    };
+
+    try {
+        const response = await httpRequest<AxiosResponse>('GET', url, queryParams);
         return response;
     } catch (error) {
         console.error('Error fetching account details:', error);
