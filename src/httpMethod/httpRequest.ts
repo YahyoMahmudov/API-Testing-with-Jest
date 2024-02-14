@@ -4,10 +4,20 @@ dotenv.config();
 
 const authToken = process.env.AUTH_TOKEN;
 
-export async function getRequest<T>(
+export async function httpRequest<T>(
     method: 'GET' | 'POST' | 'PUT' | 'DELETE',
     url: string, 
+    queryParams?: Record<string, string | number>
 ): Promise<AxiosResponse<T>> {
+    let fullUrl = url;
+
+    if (queryParams) {
+        const queryString = Object.entries(queryParams)
+            .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+            .join('&');
+        fullUrl += `?${queryString}`;
+    }
+    
     const options = {
         method,
         headers: {
@@ -17,10 +27,10 @@ export async function getRequest<T>(
     };
 
     try {
-        const response = await axios(url, options);
+        const response = await axios(fullUrl, options);
         return response;
     } catch (error) {
-        console.error(`Error making ${method} request to ${url}:`, error);
+        console.error(`Error making ${method} request to ${fullUrl}:`, error);
         throw error;
     }
 }

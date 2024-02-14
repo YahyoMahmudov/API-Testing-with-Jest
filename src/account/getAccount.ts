@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { AccountDetailsI } from './accountDetailsI'
-import { getRequest } from '../httpMethods/getRequest';
+import { httpRequest } from '../httpMethod/httpRequest';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -11,7 +11,7 @@ export async function getAccountDetails(): Promise<AxiosResponse<AccountDetailsI
     const url = `${baseUrl}account/${accountId}`;
 
     try {
-        const response = await getRequest<AccountDetailsI>('GET', url);
+        const response = await httpRequest<AccountDetailsI>('GET', url);
         return response;
     } catch (error) {
         console.error('Error fetching account details:', error);
@@ -22,8 +22,14 @@ export async function getAccountDetails(): Promise<AxiosResponse<AccountDetailsI
 export async function getAccountFavourites(): Promise<AxiosResponse<AccountDetailsI>> {
     const url = `${baseUrl}account/${accountId}?language=en-US&page=1&sort_by=created_at.asc`;
 
+    const queryParams = {
+        language: 'en-US',
+        page: 1,
+        sort_by: 'created_at.asc'
+    };
+
     try {
-        const response = await getRequest<AccountDetailsI>('GET', url);
+        const response = await httpRequest<AccountDetailsI>('GET', url, queryParams);
         return response;
     } catch (error) {
         console.error('Error fetching account details:', error);
