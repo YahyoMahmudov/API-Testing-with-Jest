@@ -1,4 +1,4 @@
-export interface DiscoverDetails {
+export interface MovieDetails {
   results: any;
   adult: boolean;
   backdrop_path: string;

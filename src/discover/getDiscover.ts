@@ -1,12 +1,12 @@
 import { AxiosResponse } from "axios";
-import { DiscoverDetails } from "./discoverDetails";
+import { MovieDetails } from "./discoverDetails";
 import { httpRequest } from "../httpMethod/httpRequest";
 import dotenv from "dotenv";
 dotenv.config();
 
 const baseUrl = process.env.BASE_URL;
 
-export async function getMovieInfo(): Promise<AxiosResponse<DiscoverDetails>> {
+export async function getMovieList(): Promise<AxiosResponse<MovieDetails>> {
   const url = `discover/movie`;
 
   const queryParams = {
@@ -18,7 +18,7 @@ export async function getMovieInfo(): Promise<AxiosResponse<DiscoverDetails>> {
   };
 
   try {
-    const response = await httpRequest<DiscoverDetails>(
+    const response = await httpRequest<MovieDetails>(
       "GET",
       url,
       queryParams
@@ -30,7 +30,7 @@ export async function getMovieInfo(): Promise<AxiosResponse<DiscoverDetails>> {
   }
 }
 
-export async function getTvInfo(): Promise<AxiosResponse<DiscoverDetails>> {
+export async function getTvShowlist(): Promise<AxiosResponse<MovieDetails>> {
   const url = `discover/tv`;
 
   const queryParams = {
@@ -42,7 +42,7 @@ export async function getTvInfo(): Promise<AxiosResponse<DiscoverDetails>> {
   };
 
   try {
-    const response = await httpRequest<DiscoverDetails>(
+    const response = await httpRequest<MovieDetails>(
       "GET",
       url,
       queryParams
