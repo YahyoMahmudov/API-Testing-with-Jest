@@ -1,4 +1,5 @@
 import { getAccountDetails } from './getAccountDetails';
+import { getAccountFavourites } from './getAccountDetails';
 
 describe('Get account details', () => {
 
@@ -9,6 +10,11 @@ describe('Get account details', () => {
 
     test('Verify that the status code of the response is 200', async () => {
         const { status } = await getAccountDetails();
+        expect(status).toBe(200);
+    });
+
+    test('Verify that the status code of the response is 200', async () => {
+        const { status } = await getAccountFavourites();
         expect(status).toBe(200);
     });
 });
