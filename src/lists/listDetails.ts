@@ -1,4 +1,4 @@
-export interface ListDetails {
+export interface MovieListDetails {
     created_by: string
     description: string
     favorite_count: number
@@ -35,4 +35,10 @@ export interface ListDetails {
     original_name?: string
     first_air_date?: string
     origin_country?: string[]
+  }
+
+  export interface Status {
+    success: boolean
+    status_code: number
+    status_message: string
   }

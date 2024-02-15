@@ -8,7 +8,7 @@ dotenv.config();
 const sessionId = process.env.SESSION_ID;
 const listId = process.env.LIST_ID;
 
-export async function clearItemsFromList(): Promise<AxiosResponse> {
+export async function clearItemsFromMovieList(): Promise<AxiosResponse> {
   const url = `list/${listId}/clear`;
   const queryParam: any = {
     session_id: sessionId,
@@ -16,8 +16,8 @@ export async function clearItemsFromList(): Promise<AxiosResponse> {
   };
 
   try {
-    const response = await httpRequest<AxiosResponse>("POST", url, queryParam);
-    return response;
+    const response = await httpRequest<ResponseType.Status>("POST", url, queryParam);
+    return response
   } catch (error) {
     console.error("Error fetching account details:", error);
     throw error;
@@ -33,7 +33,7 @@ export async function getListDetails(): Promise<AxiosResponse> {
   };
 
   try {
-    const response = await httpRequest<ResponseType.ListDetails>(
+    const response = await httpRequest<ResponseType.MovieListDetails>(
       "GET",
       url,
       queryParam
