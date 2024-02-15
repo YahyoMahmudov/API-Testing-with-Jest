@@ -6,7 +6,7 @@ dotenv.config();
 
 const baseUrl = process.env.BASE_URL;
 
-export async function getMovieList(): Promise<AxiosResponse<MovieDetails>> {
+export async function getMovieList(): Promise<AxiosResponse> {
   const url = `discover/movie`;
 
   const queryParams = {
@@ -16,6 +16,8 @@ export async function getMovieList(): Promise<AxiosResponse<MovieDetails>> {
     page: 1,
     sort_by: "popularity.desc",
   };
+
+
 
   try {
     const response = await httpRequest<MovieDetails>(
@@ -30,7 +32,7 @@ export async function getMovieList(): Promise<AxiosResponse<MovieDetails>> {
   }
 }
 
-export async function getTvShowlist(): Promise<AxiosResponse<MovieDetails>> {
+export async function getTvShowlist(): Promise<AxiosResponse> {
   const url = `discover/tv`;
 
   const queryParams = {
