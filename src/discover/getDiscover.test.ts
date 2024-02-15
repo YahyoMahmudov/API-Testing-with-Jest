@@ -1,7 +1,7 @@
 import { getMovieList } from "./getDiscover";
 import { getTvShowlist } from "./getDiscover";
 
-describe("Test for Discover Movia api ", () => {
+describe("Test for Discover Movie api ", () => {
   test("Verify that a account id is not null.", async () => {
     const data = await getMovieList();
     expect(data.data.id).not.toBe(null);

@@ -1,5 +1,5 @@
 import { clearItemsFromMovieList } from "./lists";
-import { getListDetails } from "./lists";
+import { getMovieListDetails } from "./lists";
 
 describe("Test for Lists  API ", () => {
   test("Check Status code.", async () => {
@@ -9,12 +9,12 @@ describe("Test for Lists  API ", () => {
   });
  
   test('Check Status code',async () => {
-    const {status} = await getListDetails();
+    const {status} = await getMovieListDetails();
     expect(status).toBe(200);
     })
 
     test('Check Movie List details',async () => {
-        const data = await getListDetails();
+        const data = await getMovieListDetails();
         expect(data.data.page).toBe(1);
         expect(data.data.id).not.toBe(null);
 

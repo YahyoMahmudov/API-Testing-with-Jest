@@ -17,8 +17,6 @@ export async function getMovieList(): Promise<AxiosResponse> {
     sort_by: "popularity.desc",
   };
 
-
-
   try {
     const response = await httpRequest<MovieDetails>(
       "GET",
@@ -34,7 +32,6 @@ export async function getMovieList(): Promise<AxiosResponse> {
 
 export async function getTvShowlist(): Promise<AxiosResponse> {
   const url = `discover/tv`;
-
   const queryParams = {
     include_adult: false,
     include_video: false,

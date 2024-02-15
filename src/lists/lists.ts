@@ -24,10 +24,9 @@ export async function clearItemsFromMovieList(): Promise<AxiosResponse> {
   }
 }
 
-export async function getListDetails(): Promise<AxiosResponse> {
+export async function getMovieListDetails(): Promise<AxiosResponse> {
   const url = `list/${listId}`;
   const queryParam: any = {
-    // session_id: sessionId,
     language: "en-US",
     page: 1,
   };
