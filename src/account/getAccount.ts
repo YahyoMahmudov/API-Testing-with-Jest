@@ -6,156 +6,147 @@ dotenv.config();
 
 const accountId = process.env.ACCOUNT_ID;
 
-export async function getAccountDetails(): Promise<AxiosResponse> {
+export async function getAccountDetails(): Promise<{ data: ResponseType.AccountDetails, status: number }> {
     const url = `account/${accountId}`;
 
     try {
         const response = await httpRequest<ResponseType.AccountDetails>('GET', url);
-        return response;
+        return { data: response.data, status: response.status };
     } catch (error) {
-        console.error('Error fetching account details:', error);
         throw error;
     }
 }
 
-export async function getAccountFavouriteMovies(): Promise<AxiosResponse> {
+export async function getAccountFavouriteMovies(page: number = 1): Promise<{ data: ResponseType.MovieAndTV, status: number }> {
     const url = `account/${accountId}/favorite/movies`;
 
     const queryParams = {
         language: 'en-US',
-        page: 1,
+        page,
         sort_by: 'created_at.asc'
     };
 
     try {
         const response = await httpRequest<ResponseType.MovieAndTV>('GET', url, queryParams);
-        return response;
+        return { data: response.data, status: response.status };
     } catch (error) {
-        console.error('Error fetching account details:', error);
         throw error;
     }
 }
 
-export async function getAccountFavouriteTV(): Promise<AxiosResponse> {
+export async function getAccountFavouriteTV(page: number = 1): Promise<{ data: ResponseType.MovieAndTV, status: number }> {
     const url = `account/${accountId}/favorite/tv`;
 
     const queryParams = {
         language: 'en-US',
-        page: 1,
+        page,
         sort_by: 'created_at.asc'
     };
 
     try {
         const response = await httpRequest<ResponseType.MovieAndTV>('GET', url, queryParams);
-        return response;
+        return { data: response.data, status: response.status };
     } catch (error) {
-        console.error('Error fetching account details:', error);
         throw error;
     }
 }
 
-export async function getAccountLists(): Promise<AxiosResponse> {
+export async function getAccountLists(page: number = 1): Promise<{ data: ResponseType.List, status: number }> {
     const url = `account/${accountId}/lists`;
 
     const queryParams = {
-        page: 1,
+        page,
     };
 
     try {
         const response = await httpRequest<ResponseType.List>('GET', url, queryParams);
-        return response;
+        return { data: response.data, status: response.status };
     } catch (error) {
-        console.error('Error fetching account details:', error);
         throw error;
     }
 }
 
-export async function getAccountRatedMovies(): Promise<AxiosResponse> {
+export async function getAccountRatedMovies(page: number = 1): Promise<{ data: ResponseType.MovieAndTV, status: number }> {
     const url = `account/${accountId}/rated/movies`;
 
     const queryParams = {
         language: 'en-US',
-        page: 1,
+        page,
         sort_by: 'created_at.asc'
     };
 
     try {
         const response = await httpRequest<ResponseType.MovieAndTV>('GET', url, queryParams);
-        return response;
+        return { data: response.data, status: response.status };
     } catch (error) {
-        console.error('Error fetching account details:', error);
         throw error;
     }
 }
 
-export async function getAccountRatedTV(): Promise<AxiosResponse> {
+export async function getAccountRatedTV(page: number = 1): Promise<{ data: ResponseType.MovieAndTV, status: number }> {
     const url = `account/${accountId}/rated/tv`;
 
     const queryParams = {
         language: 'en-US',
-        page: 1,
+        page,
         sort_by: 'created_at.asc'
     };
 
     try {
         const response = await httpRequest<ResponseType.MovieAndTV>('GET', url, queryParams);
-        return response;
+        return { data: response.data, status: response.status };
     } catch (error) {
-        console.error('Error fetching account details:', error);
         throw error;
     }
 }
 
-export async function getAccountRatedTvEpisodes(): Promise<AxiosResponse> {
+export async function getAccountRatedTvEpisodes(page: number = 1): Promise<{ data: ResponseType.Episode, status: number }> {
     const url = `account/${accountId}/rated/tv/episodes`;
 
     const queryParams = {
         language: 'en-US',
-        page: 1,
+        page,
         sort_by: 'created_at.asc'
     };
 
     try {
         const response = await httpRequest<ResponseType.Episode>('GET', url, queryParams);
-        return response;
+        return { data: response.data, status: response.status };
     } catch (error) {
-        console.error('Error fetching account details:', error);
         throw error;
     }
 }
 
-export async function getAccountWatchlistMovies(): Promise<AxiosResponse> {
+export async function getAccountWatchlistMovies(page: number = 1): Promise<{ data: ResponseType.MovieAndTV, status: number }> {
     const url = `account/${accountId}/watchlist/movies`;
 
     const queryParams = {
         language: 'en-US',
-        page: 1,
+        page,
         sort_by: 'created_at.asc'
     };
 
     try {
         const response = await httpRequest<ResponseType.MovieAndTV>('GET', url, queryParams);
-        return response;
+        return { data: response.data, status: response.status };
     } catch (error) {
-        console.error('Error fetching account details:', error);
         throw error;
     }
 }
 
-export async function getAccountWatchlistTV(): Promise<AxiosResponse> {
+export async function getAccountWatchlistTV(page: number = 1): Promise<{ data: ResponseType.MovieAndTV, status: number }> {
     const url = `account/${accountId}/watchlist/tv`;
 
     const queryParams = {
         language: 'en-US',
-        page: 1,
+        page,
         sort_by: 'created_at.asc'
     };
 
     try {
         const response = await httpRequest<ResponseType.MovieAndTV>('GET', url, queryParams);
-        return response;
+        return { data: response.data, status: response.status };
     } catch (error) {
-        console.error('Error fetching account details:', error);
         throw error;
     }
 }

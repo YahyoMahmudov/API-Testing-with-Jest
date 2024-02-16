@@ -1,17 +1,17 @@
-import * as AccountModule from './postAccount';
+import * as postAccount from './postAccount';
 
-describe('Get account favourite movies', () => {
+describe('Add favourite movie to the account', () => {
 
-    test('Verify that the status code of the response is 200', async () => {
-        const { status } = await AccountModule.addAccountFavourite();
-        expect(status).toBe(201);
+    test('Verify that the status code of the response is 201', async () => {
+        const response = await postAccount.addAccountFavourite(390);
+        expect(response.status).toBe(201);
     });
 });
 
-describe('Get account watchlist movies', () => {
+describe('Add watchlist movie to the account', () => {
 
-    test('Verify that the status code of the response is 200', async () => {
-        const { status } = await AccountModule.addAccountWatchlist();
-        expect(status).toBe(201);
+    test('Verify that the status code of the response is 201', async () => {
+        const response = await postAccount.addAccountWatchlist(389);
+        expect(response.status).toBe(201);
     });
 });

@@ -33,7 +33,6 @@ export async function httpRequest<T>(
         const response = await axios((baseUrl+fullUrl), options);
         return response;
     } catch (error) {
-        console.error(`Error making ${method} request to ${fullUrl}:`, error);
         throw error;
     }
 }
