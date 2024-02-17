@@ -69,7 +69,7 @@ describe('Test account rated tv episodes', () => {
     });
 });
 
-describe('Test account rated watchlist movies', () => {
+describe('Test account watchlist movies', () => {
 
     test('Verify that the status code of the response is 200', async () => {
         const response = await getAccount.getAccountWatchlistMovies();
@@ -77,7 +77,7 @@ describe('Test account rated watchlist movies', () => {
     });
 });
 
-describe('Test account rated watchlist tv', () => {
+describe('Test account watchlist tv', () => {
 
     test('Verify that the status code of the response is 200', async () => {
         const response = await getAccount.getAccountWatchlistTV();

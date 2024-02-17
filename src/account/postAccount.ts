@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios';
 import { httpRequest } from '../httpMethod/httpRequest';
 import dotenv from 'dotenv';
 dotenv.config();
