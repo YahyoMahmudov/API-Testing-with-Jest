@@ -2,13 +2,36 @@ import dotenv from "dotenv";
 import { AxiosResponse } from "axios";
 import { httpRequest } from "../httpMethod/httpRequest";
 import * as ResponseType from "./listDetails";
+import { MovieListDetails ,Status} from "./listDetails";
 
 dotenv.config();
 
 const sessionId = process.env.SESSION_ID;
-const listId = process.env.LIST_ID;
 
-export async function clearItemsFromMovieList(): Promise<AxiosResponse> {
+export async function getMovieListDetails(listId:number, page:number=1): Promise<{data:MovieListDetails, status:number}> {
+    const url = `list/${listId}`;
+    const queryParam: any = {
+      language: "en-US",
+      page,
+    };
+  
+    try {
+      const response = await httpRequest<MovieListDetails>(
+        "GET",
+        url,
+        queryParam
+      );
+      return response;
+    } catch (error) {
+      console.error("Error fetching account details:", error);
+      throw error;
+    }
+  }
+
+
+
+
+export async function clearItemsFromMovieList(listId:number): Promise<{data:Status, status:number }> {
   const url = `list/${listId}/clear`;
   const queryParam: any = {
     session_id: sessionId,
@@ -16,30 +39,10 @@ export async function clearItemsFromMovieList(): Promise<AxiosResponse> {
   };
 
   try {
-    const response = await httpRequest<ResponseType.Status>("POST", url, queryParam);
+    const response = await httpRequest<Status>("POST", url, queryParam);
     return response
   } catch (error) {
-    console.error("Error fetching account details:", error);
     throw error;
   }
 }
 
-export async function getMovieListDetails(): Promise<AxiosResponse> {
-  const url = `list/${listId}`;
-  const queryParam: any = {
-    language: "en-US",
-    page: 1,
-  };
-
-  try {
-    const response = await httpRequest<ResponseType.MovieListDetails>(
-      "GET",
-      url,
-      queryParam
-    );
-    return response;
-  } catch (error) {
-    console.error("Error fetching account details:", error);
-    throw error;
-  }
-}
