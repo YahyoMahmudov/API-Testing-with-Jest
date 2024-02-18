@@ -32,7 +32,7 @@ export async function getMovieListDetails(
 
 export async function clearItemsFromMovieList(
   listId: number
-): Promise<{ data: Status; status: number }> {
+): Promise<{status:number }> {
   const url = `list/${listId}/clear`;
   const queryParam: any = {
     session_id: sessionId,
@@ -40,7 +40,7 @@ export async function clearItemsFromMovieList(
   };
 
   try {
-    const response = await httpRequest<Status>("POST", url, queryParam);
+    const response = await httpRequest<{status:number}>("POST", url, queryParam);
     return response;
   } catch (error) {
     throw error;
